@@ -60,9 +60,9 @@ sudo snap install code --classic
 
 # Create default workspace
 echo "Creating workspace structure..."
-mkdir -p ~/workspace/projects
-mkdir -p ~/workspace/scripts
-mkdir -p ~/workspace/docker
+mkdir -p ~/Dev/projects
+mkdir -p ~/Dev/scripts
+mkdir -p ~/Dev/docker
 
 # Setup Git configuration
 echo "Configuring Git..."

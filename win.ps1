@@ -28,10 +28,10 @@ nvm install lts
 nvm install latest
 nvm use lts
 
-# Create a .nvmrc file in the workspace
+# Create a .nvmrc file in the Dev
 Write-Output "Creating .nvmrc file..."
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\workspace"
-Set-Location -Path "$env:USERPROFILE\workspace"
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Dev"
+Set-Location -Path "$env:USERPROFILE\Dev"
 nvm current > .nvmrc
 
 # Install global npm packages
@@ -72,9 +72,9 @@ choco install gitlab-runner -y
 
 # Create directory structure
 Write-Output "Creating directory structure..."
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\workspace\projects"
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\workspace\scripts"
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\workspace\docker"
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Dev\projects"
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Dev\scripts"
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Dev\docker"
 
 # Git configuration
 Write-Output "Configuring Git..."

@@ -1,154 +1,133 @@
-# DevSecOps Environment Setup
+# 🛡️ DevSecOps Environment Setup
 
-This repository contains scripts and documentation for setting up a complete DevSecOps development environment on both Windows 11 and Debian-based Linux systems. The setup includes development tools, security scanning, containerization, and CI/CD tools, with a focus on Node.js development using NVM (Node Version Manager).
+A cross-platform scripting environment for setting up a modern **DevSecOps development stack** on both **Windows 11** and **Debian-based Linux**. It includes tools for Node.js development, containerization, Kubernetes, security scanning, CI/CD, and more — tailored for developers who want a unified, automated setup.
 
-## Features
+---
 
-- Node.js development environment with NVM
-- Docker and container tools
-- Kubernetes tools (kubectl, Helm)
-- Security scanning tools
-- Testing frameworks
-- CI/CD tools
-- Development tools and IDE
+## ✨ Key Features
 
-## Prerequisites
+- 📦 Node.js development with **NVM**
+- 🐳 Docker, Podman & container ecosystem
+- ☸️ Kubernetes CLI tools (kubectl, Helm)
+- 🔐 Security scanners (Snyk, npm audit)
+- 🔁 CI/CD toolchain (GitLab Runner, Jest, Newman)
+- 🧰 Developer IDE & VS Code extensions
+- 🖥️ Support for both **Windows 11** and **Linux**
+
+---
+
+## ⚙️ Prerequisites
 
 ### Windows 11
-- Windows 11 Pro, Enterprise, or Education (required for Hyper-V)
-- PowerShell running as Administrator
+- Windows 11 Pro, Enterprise, or Education (for Hyper-V)
+- PowerShell (Run as Administrator)
 - Internet connection
-- At least 16GB of RAM recommended
-- 50GB of free disk space
+- 16GB+ RAM recommended
+- 50GB+ disk space
 
-### Debian-based Linux
-- Debian/Ubuntu-based distribution
+### Debian-based Linux (Ubuntu, etc.)
 - Sudo privileges
 - Internet connection
-- At least 8GB of RAM recommended
-- 30GB of free disk space
+- 8GB+ RAM recommended
+- 30GB+ disk space
 
-## Installation
+---
 
-### Windows 11 Setup
+## 📦 Installation
 
-1. Open PowerShell as Administrator
-2. Navigate to the script directory
-3. Run the following commands:
+### 🔧 Windows Setup
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process
 .\win.ps1
 ```
 
-### Debian-based Linux Setup
-
-1. Open Terminal
-2. Navigate to the script directory
-3. Run the following commands:
+### 🐧 Linux Setup
 ```bash
 chmod +x debian.sh
 ./debian.sh
 ```
 
-## Post-Installation Steps
+---
 
-### Node.js Environment (Both Systems)
+## 🧪 Post-Installation Verification
 
-1. Verify NVM installation:
+### Node.js (via NVM)
 ```bash
 nvm --version
-```
-
-2. List installed Node.js versions:
-```bash
 nvm ls
-```
-
-3. Switch between Node.js versions:
-```bash
-# Use LTS version
 nvm use --lts
-
-# Use latest version
 nvm use node
-
-# Use specific version
 nvm use 16.14.0
 ```
 
-### Docker Setup
-
-1. Verify Docker installation:
+### Docker
 ```bash
 docker --version
 docker-compose --version
-```
-
-2. Test Docker:
-```bash
 docker run hello-world
 ```
 
 ### Kubernetes Tools
-
-1. Verify installations:
 ```bash
 kubectl version --client
 helm version
 ```
 
-## Directory Structure
+---
 
-The setup creates the following workspace structure:
+## 🗂️ Directory Structure
 
+### Windows:
 ```
-Windows:
 %USERPROFILE%\Dev\
 ├── projects\
 ├── scripts\
 └── docker\
-
-Linux:
-~/Dev/
-├── projects\
-├── scripts\
-└── docker\
 ```
 
-## Included Tools and Components
+### Linux:
+```
+~/Dev/
+├── projects/
+├── scripts/
+└── docker/
+```
 
-### Development Tools
-- Node.js (managed by NVM)
+---
+
+## 🔍 Included Tools
+
+### Development
+- Node.js (via NVM)
 - TypeScript & ts-node
 - Git
 - Visual Studio Code
 - Windows Terminal (Windows only)
 - WSL2 (Windows only)
 
-### Security Tools
-- Snyk
-- npm-audit-fix
-- Built-in system security features
+### Security
+- Snyk CLI
+- `npm audit fix`
+- Built-in OS security features
 
-### Containerization & Orchestration
-- Docker
-- Docker Compose
-- Podman
-- Skopeo
+### Containers & Orchestration
+- Docker & Docker Compose
+- Podman & Skopeo
 - Kubernetes CLI (kubectl)
 - Helm
 
-### CI/CD Tools
+### CI/CD & Testing
 - GitLab Runner
 - Jest
-- Newman
+- Newman (Postman CLI)
 
 ### Monitoring
-- PM2 for Node.js process management
+- PM2 for Node.js process control
 
-## VS Code Extensions
+---
 
-The setup includes essential VS Code extensions:
+## 💻 VS Code Extensions (Installed)
+
 - ESLint
 - Prettier
 - Docker
@@ -156,79 +135,75 @@ The setup includes essential VS Code extensions:
 - PowerShell (Windows only)
 - Kubernetes Tools
 
-## Troubleshooting
+---
 
-### Common Issues on Windows
+## 🧰 Troubleshooting
 
-1. Hyper-V not enabled:
-   - Enable Hyper-V in Windows Features
-   - Restart your computer
+### Windows
+- **Hyper-V Not Enabled**:
+  - Enable via Windows Features
+  - Reboot required
 
-2. WSL2 installation fails:
-   - Run `wsl --update`
-   - Enable Virtual Machine Platform
+- **WSL2 Fails to Install**:
+  - Run `wsl --update`
+  - Enable Virtual Machine Platform
 
-### Common Issues on Linux
-
-1. Docker permissions:
+### Linux
+- **Docker Permission Issue**:
 ```bash
-# Add current user to docker group
 sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-2. NVM not found after installation:
+- **NVM Not Found**:
 ```bash
-# Source profile
 source ~/.bashrc
 ```
 
-## Maintenance
+---
 
-### Updating Tools
+## 🔄 Maintenance
 
-1. Node.js:
+### Update Tools
 ```bash
 nvm install --lts
 nvm install node
-```
-
-2. Global npm packages:
-```bash
 npm update -g
 ```
 
-3. Docker:
+### Update Docker (Linux)
 ```bash
-# Windows: Through Docker Desktop
-# Linux:
 sudo apt update
 sudo apt upgrade docker-ce
 ```
 
-### System Cleanup
-
-1. Remove old Node.js versions:
+### Clean Up
 ```bash
-nvm ls
 nvm uninstall <version>
-```
-
-2. Docker cleanup:
-```bash
 docker system prune -a
 ```
 
-## Contributing
+---
 
-Feel free to submit issues and enhancement requests, or contribute to the scripts:
+## 🤝 Contributing
 
+Contributions are welcome:
 1. Fork the repository
-2. Create your feature branch
+2. Create a feature branch
 3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+4. Push and open a Pull Request
 
-## License
+---
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 📄 License
+
+Licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
+
+---
+
+## 👤 Author
+**Gustavo Falcão**  
+[GitHub @gustavofalcao1](https://github.com/gustavofalcao1)  
+[Project Repository](https://github.com/gustavofalcao1/devsecops-environment)
+
+---
